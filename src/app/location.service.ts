@@ -1,33 +1,34 @@
 import { Injectable } from '@angular/core';
-import {WeatherService} from "./weather.service";
+import { Observable } from 'rxjs';
+import { NotificationService } from './shared/notificiation.service';
+import { LocationStore } from './shared/store.class';
 
-export const LOCATIONS : string = "locations";
+export const LOCATIONS: string = 'locations';
+const EMPTY_LOCATION_SET = []
 
 @Injectable()
-export class LocationService {
+export class LocationService extends LocationStore<string[]> {
+  public locations$: Observable<string[]>
 
-  locations : string[] = [];
-
-  constructor(private weatherService : WeatherService) {
-    let locString = localStorage.getItem(LOCATIONS);
-    if (locString)
-      this.locations = JSON.parse(locString);
-    for (let loc of this.locations)
-      this.weatherService.addCurrentConditions(loc);
+  constructor(private notificationService: NotificationService) {
+    super(EMPTY_LOCATION_SET);
+    this.locations$ = this.getState()
+    this.setState(JSON.parse(localStorage.getItem(LOCATIONS)) || []);
   }
 
-  addLocation(zipcode : string) {
-    this.locations.push(zipcode);
-    localStorage.setItem(LOCATIONS, JSON.stringify(this.locations));
-    this.weatherService.addCurrentConditions(zipcode);
+
+  addLocation(zipcode: string) {
+    this.setState([...this.getLocations(), zipcode]);
+    localStorage.setItem(LOCATIONS, JSON.stringify(this.getLocations()));
+    this.notificationService.notify('LOCATION_ADDED', zipcode);
   }
 
-  removeLocation(zipcode : string) {
-    let index = this.locations.indexOf(zipcode);
-    if (index !== -1){
-      this.locations.splice(index, 1);
-      localStorage.setItem(LOCATIONS, JSON.stringify(this.locations));
-      this.weatherService.removeCurrentConditions(zipcode);
+  removeLocation(zipcode: string) {
+    let index = this.getLocations().indexOf(zipcode);
+    if (index !== -1) {
+      this.setState(this.getLocations().filter(code => code !== zipcode))
+      localStorage.setItem(LOCATIONS, JSON.stringify(this.getLocations()));
+      this.notificationService.notify('LOCATION_REMOVED', zipcode);
     }
   }
 }
