@@ -1,8 +1,26 @@
 <div class="well">
   <h2>Enter a zipcode:</h2>
-  <input type="text" #zipcode placeholder="Zipcode" class="form-control">
-  <br>
-  <button class="btn btn-primary" (click)="addLocation(zipcode.value)" >
-    Add location
-  </button>
+  <form #form="ngForm" (ngSubmit)="addLocation(zipcode.value, form)">
+    <input
+      type="text"
+      #zipcode="ngModel"
+      placeholder="Zipcode"
+      class="form-control"
+      name="zipCode"
+      ngModel
+      validZipCode
+      uniqueLocation
+    />
+    <!-- display colored errors after form submission -->
+    <div *ngIf="form.submitted && zipcode.errors?.zipCode" class="error">
+      {{zipcode.errors.zipCode}}
+    </div>
+    <div *ngIf="form.submitted && zipcode.errors?.locationUniqueness" class="error">
+      {{zipcode.errors.locationUniqueness}}
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">
+      Add location
+    </button>
+  </form>
 </div>

@@ -14,6 +14,8 @@ import {routing} from "./app.routing";
 import {HttpClientModule} from "@angular/common/http";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ZipCodeValidator } from './valid-zip-code.directive';
+import { UniqueLocationValidator } from './unique-location.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { environment } from '../environments/environment';
     ZipcodeEntryComponent,
     ForecastsListComponent,
     CurrentConditionsComponent,
-    MainPageComponent
+    MainPageComponent,
+    ZipCodeValidator,
+    UniqueLocationValidator,
   ],
   imports: [
     BrowserModule,
