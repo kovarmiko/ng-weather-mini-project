@@ -16,6 +16,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ZipCodeValidator } from './valid-zip-code.directive';
 import { UniqueLocationValidator } from './unique-location.directive';
+import { CurrentConditionComponent } from './current-conditions/current-condition/current-condition.component';
+import { WeahterIconSrcDirective } from './weahter-icon-src.directive';
+import { TabComponent } from './shared/tab/tab.component';
+import { TabsComponent } from './shared/tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +27,13 @@ import { UniqueLocationValidator } from './unique-location.directive';
     ZipcodeEntryComponent,
     ForecastsListComponent,
     CurrentConditionsComponent,
+    CurrentConditionComponent,
     MainPageComponent,
     ZipCodeValidator,
     UniqueLocationValidator,
+    WeahterIconSrcDirective,
+    TabComponent,
+    TabsComponent,
   ],
   imports: [
     BrowserModule,

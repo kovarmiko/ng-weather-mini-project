@@ -1,0 +1,14 @@
+.tab {
+  background-color: #627c9f;
+  border: 1px solid black;
+  border-bottom-width: 0px;
+  color: white;
+}
+
+.tab:not(.active){
+    opacity: 0.7;
+}
+
+.tab-wrapper {
+  border: 1px solid black;
+}

@@ -1,0 +1,27 @@
+<div class="tab-header">
+  <div
+    *ngFor="let tab of tabs; let i = index"
+    class="d-inline-flex p-2 tab me-2"
+    [class.active]="tab.active"
+  >
+    <div>
+      <span class="fs-5 cursor-pointer" (click)="selectTab(tab, i)">{{
+        tab.tabTitle
+      }}</span>
+      <button
+        (click)="removeTab(tab, i)"
+        type="button"
+        class="btn-close btn-close-white ms-2 p-0"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+  <div class="tab-content">
+    <div class="p-4 tab-wrapper">
+      <ng-container
+        [ngTemplateOutlet]="selectedTabTemplate"
+        [ngTemplateOutletContext]="{ data: activeTemplateData }"
+      ></ng-container>
+    </div>
+  </div>
+</div>
