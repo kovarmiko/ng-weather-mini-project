@@ -1,6 +1,6 @@
 <div>
   <ng-container *ngIf="currentConditionsByZip().length">
-    <app-tabs (tabRemoved)="locationService.removeLocation($event)" [selectedTabTemplate]="tabContent" idProperty="zipcode">
+    <app-tabs (tabRemoved)="locationService.removeLocation($event)" [selectedTabTemplate]="currentCondition" idProperty="zipcode">
       <app-tab
         *ngFor="let tab of currentConditionsByZip()"
         [tabTitle]="tab.displayName"
