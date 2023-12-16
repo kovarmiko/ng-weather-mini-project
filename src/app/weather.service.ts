@@ -6,7 +6,7 @@ import { CurrentConditions } from './current-conditions/current-conditions.type'
 import { ConditionsAndZip } from './conditions-and-zip.type';
 import { Forecast } from './forecasts-list/forecast.type';
 import { environment } from '../environments/environment';
-import { NotificationService } from '../notificiation.service';
+import { NotificationService } from './notificiation.service';
 
 
 export const ICON_URL =

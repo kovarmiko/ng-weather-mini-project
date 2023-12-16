@@ -4,7 +4,7 @@ import { LocationService } from '../location.service';
 import { Route } from '@angular/router';
 import { ConditionsAndZip } from '../conditions-and-zip.type';
 import { take } from 'rxjs/operators';
-import { NotificationService } from '../../notificiation.service';
+import { NotificationService } from '../notificiation.service';
 
 @Component({
   selector: 'app-current-conditions',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LocationStore } from '../store.class';
-import { NotificationService } from '../notificiation.service';
+import { NotificationService } from './notificiation.service';
 
 export const LOCATIONS: string = 'locations';
 const EMPTY_LOCATION_SET = []
