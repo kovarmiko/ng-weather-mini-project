@@ -6,6 +6,8 @@ import { CurrentConditions } from './current-conditions/current-conditions.type'
 import { ConditionsAndZip } from './conditions-and-zip.type';
 import { Forecast } from './forecasts-list/forecast.type';
 import { NotificationService } from './shared/notificiation.service';
+import { environment } from '../environments/environment';
+
 
 export const ICON_URL =
   'https://raw.githubusercontent.com/udacity/Sunshine-Version-2/sunshine_master/app/src/main/res/drawable-hdpi/';
@@ -13,7 +15,7 @@ export const ICON_URL =
 @Injectable()
 export class WeatherService {
   static URL = 'http://api.openweathermap.org/data/2.5';
-  static APPID = '5a4b2d457ecbef9eb2a71e480b947604';
+  static APPID = environment.WEATHER_DATA_APPID;
 
   private currentConditions = signal<ConditionsAndZip[]>([]);
 
