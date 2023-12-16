@@ -1,5 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
-import { ICON_URL } from './weather.service';
+
+export const ICON_URL =
+  'https://raw.githubusercontent.com/udacity/Sunshine-Version-2/sunshine_master/app/src/main/res/drawable-hdpi/';
 
 @Directive({
   selector: 'img[weatherIconSrc]',

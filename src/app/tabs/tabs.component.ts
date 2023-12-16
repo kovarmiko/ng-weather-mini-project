@@ -40,7 +40,6 @@ export class TabsComponent implements AfterContentInit {
   }
 
   removeTab(tab: TabComponent, index: number): void {
-    
     if (tab.active && this.tabs.length > 1) {
       this.showAdjacentTab(index);
     }
@@ -51,7 +50,9 @@ export class TabsComponent implements AfterContentInit {
     const leftPosition = index - 1;
     const rightPosition = index + 1;
     const leftPositionExists = leftPosition >= 0;
-    const adjacentTabIndex = leftPositionExists ? leftPosition : rightPosition;
+    const tabIslast = index + 1 === this.tabs.length;
+    const adjacentTabIndex =
+      leftPositionExists && tabIslast ? leftPosition : rightPosition;
     this.selectTab(this.tabs.find((_tab, index) => index === adjacentTabIndex));
   }
 }

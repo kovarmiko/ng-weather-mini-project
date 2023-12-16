@@ -1,7 +1,6 @@
 import { Component, inject, OnInit, Signal, Type } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { LocationService } from '../location.service';
-import { Route } from '@angular/router';
 import { ConditionsAndZip } from '../conditions-and-zip.type';
 import { take } from 'rxjs/operators';
 import { NotificationService } from '../notificiation.service';

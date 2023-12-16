@@ -15,9 +15,9 @@ export class ZipCodeValidator implements Validator {
   }
 
   static validateZipCode(control: AbstractControl): ValidationErrors | null {
-    const zipCodeMatcher = /^\d{5}$/
+    const zipCodePattern = /^\d{5}$/
 
-    if ( zipCodeMatcher.test('' + control.value)) {
+    if ( zipCodePattern.test('' + control.value)) {
       return null
     }
 

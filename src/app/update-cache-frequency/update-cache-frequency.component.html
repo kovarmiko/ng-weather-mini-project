@@ -3,11 +3,10 @@
     [(ngModel)]="cacheLifespan"
     (ngModelChange)="setCacheLifespan($event)"
     class="form-select"
-    id="floatingSelect"
-    aria-label="Floating label select example"
+    id="cacheLifespan"
   >
     <option [value]="1000 * 60 * 60 * 2" selected>two hours</option>
     <option [value]="1000 * 5">five seconds</option>
   </select>
-  <label for="floatingSelect">Keep weather data in memory for</label>
+  <label for="cacheLifespan">Keep weather data in memory for</label>
 </div>

@@ -8,10 +8,6 @@ import { Forecast } from './forecasts-list/forecast.type';
 import { environment } from '../environments/environment';
 import { NotificationService } from './notificiation.service';
 
-
-export const ICON_URL =
-  'https://raw.githubusercontent.com/udacity/Sunshine-Version-2/sunshine_master/app/src/main/res/drawable-hdpi/';
-
 @Injectable()
 export class WeatherService {
   static URL = environment.OPEN_WEATHER_MAP_HOST;

@@ -56,7 +56,7 @@ import { TabsComponent } from './tabs/tabs.component';
     {provide: CACHE_TTL, useValue: TWO_HOURS_IN_MILISECONDS},
     {
       provide: HTTP_INTERCEPTORS,
-      // make the CachingHttpService a singleton to enable configuration
+      // make `CachingHttpService` a singleton to enable configuration
       useExisting: CachingHttpService, 
       multi: true,
     },
