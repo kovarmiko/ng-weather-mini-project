@@ -3,8 +3,8 @@ import { WeatherService } from '../weather.service';
 import { LocationService } from '../location.service';
 import { Route } from '@angular/router';
 import { ConditionsAndZip } from '../conditions-and-zip.type';
-import { NotificationService } from '../shared/notificiation.service';
 import { take } from 'rxjs/operators';
+import { NotificationService } from '../../notificiation.service';
 
 @Component({
   selector: 'app-current-conditions',

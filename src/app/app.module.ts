@@ -18,11 +18,11 @@ import { ZipCodeValidator } from './valid-zip-code.directive';
 import { UniqueLocationValidator } from './unique-location.directive';
 import { CurrentConditionComponent } from './current-conditions/current-condition/current-condition.component';
 import { WeahterIconSrcDirective } from './weahter-icon-src.directive';
-import { TabComponent } from './shared/tab/tab.component';
-import { TabsComponent } from './shared/tabs/tabs.component';
 import { CachingHttpService } from './caching-http.service';
 import { CACHE_TTL, TWO_HOURS_IN_MILISECONDS } from './config';
 import { UpdateCacheFrequencyComponent } from './update-cache-frequency/update-cache-frequency.component';
+import { TabComponent } from './tab/tab.component';
+import { TabsComponent } from './tabs/tabs.component';
 
 @NgModule({
   declarations: [
