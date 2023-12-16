@@ -8,6 +8,9 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./zipcode-entry.component.css'],
 })
 export class ZipcodeEntryComponent {
+  
+  public configVisible = false
+  
   constructor(private locationService: LocationService) {}
 
   addLocation(zipcode: string, form: NgForm) {
@@ -19,5 +22,9 @@ export class ZipcodeEntryComponent {
     form.resetForm();
 
     this.locationService.addLocation(zipcode);
+  }
+
+  toggleConfig() {
+    this.configVisible = !this.configVisible
   }
 }

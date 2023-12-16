@@ -1,7 +1,12 @@
 <div class="container">
-  <app-zipcode-entry> </app-zipcode-entry>
-</div>
+  <div class="card card-body bg-light">
+    <app-zipcode-entry #zpe> </app-zipcode-entry>
+    <div class="mt-5" [hidden]="!zpe.configVisible">
+      <app-update-cache-frequency ></app-update-cache-frequency>
+    </div>
+  </div>
 
-<div class="container mt-5">
-  <app-current-conditions></app-current-conditions>
+  <div class="mt-5">
+    <app-current-conditions></app-current-conditions>
+  </div>
 </div>

@@ -1,25 +1,26 @@
-<div class="card card-body bg-light">
-  <h2>Enter a zipcode:</h2>
-  <form #form="ngForm" (ngSubmit)="addLocation(zipcode.value, form)">
-    <input
-      type="text"
-      #zipcode="ngModel"
-      placeholder="Zipcode"
-      class="form-control"
-      name="zipCode"
-      ngModel
-      validZipCode
-      uniqueLocation
-    />
-    <div *ngIf="form.submitted && zipcode.errors?.zipCode" class="error">
-      {{zipcode.errors.zipCode}}
-    </div>
-    <div *ngIf="form.submitted && zipcode.errors?.locationUniqueness" class="error">
-      {{zipcode.errors.locationUniqueness}}
-    </div>
-    <br />
-    <button type="submit" class="btn btn-primary">
-      Add location
-    </button>
-  </form>
-</div>
+<h2>Enter a zipcode:</h2>
+<form #form="ngForm" (ngSubmit)="addLocation(zipcode.value, form)">
+  <input
+    type="text"
+    #zipcode="ngModel"
+    placeholder="Zipcode"
+    class="form-control"
+    name="zipCode"
+    ngModel
+    validZipCode
+    uniqueLocation
+  />
+  <div *ngIf="form.submitted && zipcode.errors?.zipCode" class="error">
+    {{ zipcode.errors.zipCode }}
+  </div>
+  <div
+    *ngIf="form.submitted && zipcode.errors?.locationUniqueness"
+    class="error"
+  >
+    {{ zipcode.errors.locationUniqueness }}
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Add location</button
+  ><a href="#" class="cursor-pointer ms-2 link-underline-light" (click)="toggleConfig()"
+    >{{ configVisible ? 'hide configuration' : 'configure' }}</a>
+</form>

@@ -4,14 +4,14 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ZipcodeEntryComponent } from './zipcode-entry/zipcode-entry.component';
-import {LocationService} from "./location.service";
+import { LocationService } from './location.service';
 import { ForecastsListComponent } from './forecasts-list/forecasts-list.component';
-import {WeatherService} from "./weather.service";
+import { WeatherService } from './weather.service';
 import { CurrentConditionsComponent } from './current-conditions/current-conditions.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import {RouterModule} from "@angular/router";
-import {routing} from "./app.routing";
-import {HttpClientModule} from "@angular/common/http";
+import { RouterModule } from '@angular/router';
+import { routing } from './app.routing';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ZipCodeValidator } from './valid-zip-code.directive';
@@ -20,6 +20,9 @@ import { CurrentConditionComponent } from './current-conditions/current-conditio
 import { WeahterIconSrcDirective } from './weahter-icon-src.directive';
 import { TabComponent } from './shared/tab/tab.component';
 import { TabsComponent } from './shared/tabs/tabs.component';
+import { CachingHttpService } from './caching-http.service';
+import { CACHE_TTL, TWO_HOURS_IN_MILISECONDS } from './config';
+import { UpdateCacheFrequencyComponent } from './update-cache-frequency/update-cache-frequency.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { TabsComponent } from './shared/tabs/tabs.component';
     WeahterIconSrcDirective,
     TabComponent,
     TabsComponent,
+    UpdateCacheFrequencyComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,9 +45,22 @@ import { TabsComponent } from './shared/tabs/tabs.component';
     HttpClientModule,
     RouterModule,
     routing,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', {
+      enabled: environment.production,
+    }),
   ],
-  providers: [LocationService, WeatherService],
-  bootstrap: [AppComponent]
+  providers: [
+    LocationService,
+    WeatherService,
+    CachingHttpService,
+    {provide: CACHE_TTL, useValue: TWO_HOURS_IN_MILISECONDS},
+    {
+      provide: HTTP_INTERCEPTORS,
+      // make the CachingHttpService a singleton to enable configuration
+      useExisting: CachingHttpService, 
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
