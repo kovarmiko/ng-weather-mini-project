@@ -7,7 +7,7 @@
     "start": "node server.js",
     "start:dev": "ng serve",
     "start:prod": "ng serve --configuration=production",
-    "postinstall": "ng build --aot -prod",
+    "postinstall": "ng build --aot --configuration=production",
     "heroku-postbuild": "ng build",
     "build": "ng build",
     "test": "ng test",
@@ -55,5 +55,9 @@
     "ts-node": "5.0.1",
     "tslint": "~6.1.0",
     "typescript": "5.2.2"
+  },
+  "engines" : { 
+    "npm" : "10.2.3",
+    "node" : "18.19.0"
   }
 }
