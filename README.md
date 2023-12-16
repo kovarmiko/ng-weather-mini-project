@@ -1,6 +1,6 @@
-# NgWeather
+# NgWeather Mini Project
 
-An app that showcases how to build a simple app with Angular (running on 14.x)
+An app that showcases use of various angular techniques to store data, display results and faciliate communication amongst its components. (running on  Angular 17.x)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
