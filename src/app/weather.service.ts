@@ -14,7 +14,7 @@ export const ICON_URL =
 
 @Injectable()
 export class WeatherService {
-  static URL = 'http://api.openweathermap.org/data/2.5';
+  static URL = environment.OPEN_WEATHER_MAP_HOST;
   static APPID = environment.WEATHER_DATA_APPID;
 
   private currentConditions = signal<ConditionsAndZip[]>([]);
